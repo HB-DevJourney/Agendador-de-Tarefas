@@ -1,8 +1,8 @@
 package com.mateus.gerenciadortarefas.infrastructure.security.config;
 
 import com.mateus.gerenciadortarefas.infrastructure.security.filter.JwtRequestFilter;
-import com.mateus.gerenciadortarefas.infrastructure.security.service.UserDetailsServiceImpl;
 import com.mateus.gerenciadortarefas.infrastructure.security.util.JwtUtil;
+import com.mateus.gerenciadortarefas.infrastructure.security.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,7 +30,7 @@ public class SecurityConfig {
 
     // Configuração do filtro de segurança
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, UserDetailsServiceImpl userDetailsService) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         // Cria uma instância do JwtRequestFilter com JwtUtil e UserDetailsService
         JwtRequestFilter jwtRequestFilter = new JwtRequestFilter(jwtUtil, userDetailsService);
 
@@ -47,5 +47,6 @@ public class SecurityConfig {
         // Retorna a configuração do filtro de segurança construída
         return http.build();
     }
+
 
 }
